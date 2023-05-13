@@ -1,4 +1,4 @@
-const { User, Thought, Reaction } = require("../models");
+const { User, Thought } = require("../models");
 
 module.exports = {
     //getting all thoughts
@@ -89,7 +89,7 @@ module.exports = {
     // Create a reaction
     async createReaction(req, res) {
         try {
-            const reaction = await Reaction.findOneAndUpdate(
+            const reaction = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $addToSet: { reactions: req.body } },
                 { runValidators: true, new: true }
@@ -107,7 +107,7 @@ module.exports = {
     //delete a reaction
     async removeReaction(req, res) {
         try {
-            const reaction = await Reaction.findOneAndUpdate(
+            const reaction = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { runValidators: true, new: true }
@@ -116,7 +116,7 @@ module.exports = {
             if (!reaction) {
                 return res
                     .status(404)
-                    .json({ message: 'No student found with that ID :(' });
+                    .json({ message: 'No reaction found with that ID :(' });
             }
 
             res.json(reaction);
