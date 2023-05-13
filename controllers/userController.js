@@ -1,7 +1,7 @@
 const { User, Thought } = require("../models");
 module.exports = {
     // get all users
-    async getStudents(req, res) {
+    async getAllUsers(req, res) {
         try {
             const users = await User.find();
             res.json(users);
@@ -10,7 +10,7 @@ module.exports = {
             return res.status(500).json(err);
         }
     },//get one user
-    async getSingleCourse(req, res) {
+    async getOneUser(req, res) {
         try {
             const user = await User.findOne({ _id: req.params.userId })
                 .populate("thoughts")
@@ -50,7 +50,23 @@ module.exports = {
         } catch (err) {
             res.status(500).json(err);
         }
-    },// add a friend
+    },//delete a user
+    async deleteUser(req, res) {
+        try {
+            const user = await Course.findOneAndDelete({ _id: req.params.userId });
+
+            if (!user) {
+                res.status(404).json({ message: 'No course with that ID' });
+            }
+
+            await User.deleteMany({ _id: { $in: user } });
+            res.json({ message: 'Course and students deleted!' });
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+
+    // add a friend
     async addFriend(req, res) {
         console.log('You are adding a friend');
         console.log(req.body);

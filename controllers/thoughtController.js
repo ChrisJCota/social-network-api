@@ -42,7 +42,7 @@ module.exports = {
             )
     },
     // Update a thought
-    async updateCourse(req, res) {
+    async updateThought(req, res) {
         try {
             const thoughts = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
