@@ -26,21 +26,41 @@ module.exports = {
         }
     },
     // creating a thought
-    createThought(req, res) {
-        Thought.create(req.body)
-            .then(({ _id }) => {
-                return User.findOneAndUpdate(
-                    { _id: req.body.userId },
-                    { $push: { thoughts: _id } },
+    createThought({ body }, res) {
+        Thought.create(body)
+            .then(thoughtInfo => {
+                User.findOneAndUpdate(
+                    { _id: body.userId },
+                    { $push: { thoughts: thoughtInfo._id } },
                     { new: true }
-                );
+                )
+                    .then((thought) => {
+                        !thought
+                            ? res.status(404).json({ message: 'No User with this ID' })
+                            : res.json(thought)
+                    })
+
             })
-            .then((thought) =>
-                !thought
-                    ? res.status(404).json({ message: 'No User with this ID' })
-                    : res.json(thought)
-            )
     },
+    // createThought({ body }, res) {
+    //     Thought.create(body)
+    //         .then(thoughtData => {
+    //             User.findOneAndUpdate(
+    //                 { _id: body.userId },
+    //                 { $push: { thoughts: thoughtData._id } },
+    //                 { new: true }
+    //             )
+    //                 .then(userData => {
+    //                     if (!userData) {
+    //                         res.status(404).json({ message: 'Thought created but no user found with this id' });
+    //                         return;
+    //                     }
+    //                     res.json(userData);
+    //                 })
+    //                 .catch(err => res.json(err));
+    //         })
+    //         .catch(err => res.status(400).json(err));
+    // },
     // Update a thought
     async updateThought(req, res) {
         try {
