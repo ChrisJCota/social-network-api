@@ -5,7 +5,7 @@
 This is an API where different users can share their thoughts and reactions as well as create a friend list. This project uses `Express.JS` for routing, a `MongoDB Database`, a `Mongoose ODM`, the seed data is created using `insomnia`
 
 ## Motivation
-building an API using mongoDB that is compatible with Insomnia
+The motivation for this project was to use a real life example to practice and seed `MongoDB`
 
 ## Usage 
 To start the application, run `npm start`
