@@ -1,6 +1,5 @@
 # social-network-api
 
-## Social Network API
 
 ## Description
 This is an API where different users can share their thoughts and reactions as well as create a friend list. This project uses `Express.JS` for routing, a `MongoDB Database`, a `Mongoose ODM`, the seed data is created using `insomnia`
