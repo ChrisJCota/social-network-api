@@ -23,6 +23,26 @@ To create seed data and test api routes use `insomnia`
 * Insomnia
 
 ## Testing
+`Insomnia` is used to test the REST API calls.
+
+### User API Routes
+* Creating new User: POST `/api/users`
+* Getting all Users: GET `api/users`
+* Getting a single User: GET `/api/users/:userId`
+* Update User: PUT `api/users/:userId`
+* Delete User: Delete `api/users/:userId`
+### Friend API Routes
+* Add new friend: POST `api/users/:userId/friends/friendId`
+* Delete a friend: DELETE `api/users/:userId/friends/friendId`
+### Thought API Routes
+* create a thought: POST `/api/thoughts/`
+* Get all thoughts: GET `/api/thoughts/`
+* Get a single thought: GET `/api/thoughts/:thoughtId`
+* Update a thought: PUT `/api/thoughts/:thoughtId`
+* Delete a thought: DELETE `/api/thoughts/:thoughtId`
+### Reaction API Routes
+* Create a reaction: POST `/api/thoughts/:thoughtId/reactions`
+* Delete a reaction: DELETE `/api/thoughts/:thoughtId/reactions/:reactionId
 
 ## Credits
 Chris Cota
