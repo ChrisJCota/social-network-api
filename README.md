@@ -13,11 +13,16 @@ The mongoose models should then be synced to your DB
 Open MongoDB and connect using the `mongodb://localhost:27017` URI. You should see a thoughts and users folder inside the db
 To create seed data and test api routes use `insomnia`
 
-## instructions
-run npm i
-Run NPM start
-Open MongoDB Compass to view your DB folder
-Open Insomnia to start building your Social Media API
+
+## Technologies
+* Node.js
+* Express.js
+* Javascript
+* MongoDB
+* Mongoose
+* Insomnia
+
+## Testing
 
 ## Credits
 Chris Cota
