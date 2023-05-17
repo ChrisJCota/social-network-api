@@ -45,4 +45,4 @@ To create seed data and test api routes use `insomnia`
 * Delete a reaction: DELETE `/api/thoughts/:thoughtId/reactions/:reactionId
 
 ## Credits
-Chris Cota
+Chris Cota - https://github.com/ChrisJCota
